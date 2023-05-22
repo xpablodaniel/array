@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú del día</title>
+    <link rel="stylesheet" href="menuSemSta.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700&display=swap">
+</head>
+
+<body>    
+    <div class="page-container">
+        <header>
+            <div class="image-container">
+                <div class="left-image">
+                    <img src="./solTr.png" alt="">
+                </div>
+                <div class="right-image">
+                    <img src="./FotoJet.png" alt="">
+                </div>
+            </div> 
+            <h1>Menú del Día Nº 
+              <select id="dia"> 
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+              </select> <span class="dropdown-arrow"></span>
+          </h1>
+          <h3 id="MenuEspecial"></h3>
+
+        </header>
+       
+        <section class="cena">
+            <h2>Cena</h2>
+            <ul id="menu"></ul>
+        </section>
+        <footer>
+            <button class="print-button" id="imprimir" onclick="window.print()">
+                <span class="material-symbols-sharp">
+                    print
+                </span>
+            </button>
+        </footer>
+    </div>
+    
+    <script>
+        const h3 = document.getElementById('MenuEspecial');
+        MenuEspecial.innerText = 'Semana Santa';
+        function mostrarMenu() {
+            const diaSelect = document.getElementById('dia');
+            const dia = diaSelect.value;
+            let entrada = '';
+            let principal = '';
+            let postre = '';
+          
+            switch (dia) {
+              case '1':
+                entrada = 'Empanada Gallega de Atún';
+                principal = 'Crepe de Espinaca y Ricota con Crema de Puerros';
+                postre = 'Trifle de Chocolate';
+                break;
+              case '2':
+                entrada = 'Quiche de Calabaza con Ensaladilla';
+                principal = 'Supremita de Pollo a la Suiza con Papas Españolas';
+                postre = 'Brownie de Chocolate con Helado';
+                break;
+              case '3':
+                entrada = 'Muzzarellitas Panadas con Salsa Alexander';
+                principal = 'Tapa de Asado Braseada con Papines a la Provenzal';
+                postre = 'Crumble de Peras';
+                break;
+              case '4':
+                entrada = 'Papines Rellenos con Panceta Crujiente';
+                principal = 'Milanesa de Ternera con Ensalada del Cheff';
+                postre = 'Duraznos con Dulce de Leche';
+                break;
+              default:
+                console.log('Opción inválida');
+                return;
+            }
+          
+            // Obtener el elemento ul
+            const menuList = document.getElementById('menu');
+          
+            // Limpiar los elementos anteriores del menú
+            menuList.innerHTML = '';
+          
+            // Crear los elementos li y span para cada elemento del menú
+            const entradaItem = document.createElement('li');
+            const entradaText = document.createElement('span');
+            entradaText.textContent = entrada;
+            entradaItem.appendChild(document.createTextNode('Entrada: '));
+            entradaItem.appendChild(entradaText);
+          
+            const principalItem = document.createElement('li');
+            const principalText = document.createElement('span');
+            principalText.textContent = principal;
+            principalItem.appendChild(document.createTextNode('Plato Principal: '));
+            principalItem.appendChild(principalText);
+          
+            const postreItem = document.createElement('li');
+            const postreText = document.createElement('span');
+            postreText.textContent = postre;
+            postreItem.appendChild(document.createTextNode('Postre: '));
+            postreItem.appendChild(postreText);
+          
+            // Agregar los elementos li al elemento ul
+            menuList.appendChild(entradaItem);
+            menuList.appendChild(principalItem);
+            menuList.appendChild(postreItem);
+          }
+          
+          window.addEventListener('load', function() {
+            // Obtener el elemento select
+            const diaSelect = document.getElementById('dia');
+          
+            // Agregar un listener al cambio del valor seleccionado del select
+            diaSelect.addEventListener('change', mostrarMenu);
+          });
+          
+        </script>
+
+
+</body>
+</html>
