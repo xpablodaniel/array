@@ -1,0 +1,3 @@
+se agrego una foto al sujeto 1. git add y git commit 1
+se creo una bitacora para seguimiento. git add y commit 2
+
