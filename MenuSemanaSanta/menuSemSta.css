@@ -16,8 +16,8 @@
    margin: 0 auto; /* centra el contenedor horizontalmente */
    border: 2px solid black;
    box-sizing: border-box; /* incluye el borde en el ancho total del contenedor */
-   padding-top: 50px;
-   padding-bottom: 60px; /* agrega un relleno interno para separar el contenido del borde */
+   padding-top: 25px;
+   padding-bottom: 30px; /* agrega un relleno interno para separar el contenido del borde */
  }
 
 body {
@@ -40,7 +40,7 @@ body {
    justify-content: center;
    align-items: center;
    height: 100%;
-   font-size: 30px;
+   font-size: 40px;
 }
 
 header {
@@ -78,12 +78,23 @@ main {
 }
 
 section {
-   margin-bottom: 60px;
+   margin-bottom: 10px;
+   /* border: 1px solid black; */
 }
 
+h1 {
+   font-size: 50px;
+}
 h2 {
-   margin-bottom: 20px;
+   /* margin-bottom: 20px; */
    text-decoration: underline;
+   padding: 0px;
+   margin: 0px;
+   
+}
+h3{
+   line-height: 1;
+   
 }
 
 .header-container {
@@ -98,12 +109,13 @@ h2 {
 }
 
 select {
-   font-size: 60px;
+   font-size: 50px;
    text-align: center;
    border: none;
    -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    
    
  }
  
@@ -129,11 +141,13 @@ select {
  nav ul li a {
    /* font-size: 45px; */
    font-weight: bold;
+   
  }
 ul {
    list-style: none;
    margin: 0;
    padding: 0;
+   
 }
 
 li {
