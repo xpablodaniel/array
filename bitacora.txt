@@ -1,7 +1,0 @@
-se agrego una foto al sujeto 1. git add y git commit 1
-se creo una bitacora para seguimiento. git add y commit 2
-practica de comandos git show y git log
-7110808fc60bbb3f231cb1a5c26bf06be085618e
-e2a097220ef3aa7208148262b2fd6f810b1f3cba
-comparacion de hashes para volver a instancia anterior
-se procede a rehacer cambios en h1 fuente y pic. se anota el numero hash commit
