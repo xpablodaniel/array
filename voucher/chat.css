@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+        
+@media print {
+    /* Ajustar el tamaño de la página al contenido */
+    @page {
+        size: auto;
+        margin: 0;
+    }
+    
+    /* Ocultar el encabezado predeterminado */
+    @top-center {
+        content: none;
+    }
+
+    /* Oculta el nombre de archivo y número de página */
+    @bottom-left {
+        content: none;
+    }
+}
+  
+html,
+body {
+    height: 297mm;
+    width: 210mm;
+    margin: 0;
+    padding: 0;
+    
+}
+
+/* Oculta el encabezado y el pie de página */
+header, footer {
+    display: none;
+}
+
+/* Oculta cualquier elemento con la clase "no-print" */
+.no-print {
+    display: none;
+}
+
+/* Oculta el cursor del mouse */
+html {
+    cursor: none;
+}
+
+.mi-tabla {
+    border: 2px solid #000;
+    border-collapse: collapse;
+    width: 90%;
+    margin: auto;
+}
+
+.mi-tabla th:nth-child(3) {
+    width: 25%;
+}
+
+.mi-tabla th:nth-child(5) {
+    width: 25%;
+}
+
+.mi-tabla th:nth-child(7) {
+    width: 10%;
+}
+
+.mi-tabla th:nth-child(9) {
+    width: 25%;
+}
+
+.mi-tabla th:nth-child(10) {
+    width: 15%;
+}
+
+.mi-tabla td,
+.mi-tabla th {
+    border: 1px solid #ccc;
+    padding: 4px;
+    text-align: center;
+}
+
+.mi-tabla td {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.mi-tabla th {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.mi-tabla tr:not(:first-child) td {
+    border-top: 1px solid #ccc;
+}
+
+.mi-tabla tr:last-child td {
+    border-bottom: 2px solid #000;
+}
+
+.mi-tabla tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+.mi-tabla tr:hover {
+    background-color: #ddd;
+}

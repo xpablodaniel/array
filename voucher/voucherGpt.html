@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voucher Final</title>
+    <!-- <link rel="stylesheet" href="voucherGpt.css"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+    @media print {
+    html, body {
+    height: 297mm;
+    width: 210mm;
+    margin: 0;
+    padding: 0;
+    }
+    
+    .container {
+    width: 210mm;
+    height: 99.06mm;
+    margin: 0 auto;
+    <!-- display: none; -->
+    }
+    
+    .voucher-copy {
+    display: block;
+    margin-bottom: 5mm;
+    }
+    }
+    .voucher-copy:not(:last-child) {
+        margin-bottom: 5mm;
+        }
+
+        
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 62.5%;
+    font-family: "Poppins", sans-serif;
+    
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.container{
+    position: relative;
+    width: 600px;
+    height: 350px;
+    border-radius: 10px;
+    border: 2px solid #333;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.container img{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    width: 25%;
+    width: calc(100% / 3);
+}
+/* .tres-filas .container {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+    width: calc(100% / 3);
+    box-sizing: border-box;
+    padding: 20px;
+    height: 300px;
+  } */
+
+h1{
+    padding-top: 20px;
+    font-size: 2.5rem;
+    font-family: 'Times New Roman', Times, serif;
+    /* font-weight: 900; */
+    text-transform: uppercase;
+ 
+ }
+
+  table td {
+    
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-transform: uppercase;
+    color: white;
+    
+  }
+
+  table th{
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+ 
+table{
+    width: 100%;
+    /* margin: 30px 10px; */
+}
+.a{
+    padding-top: 20px;
+}
+
+.c{
+    padding-bottom: 7px;
+}
+.e th{
+    text-align: center;
+    padding-top: 7px;
+}
+.name{
+    width: 80%;
+    
+    
+}
+.dni{
+    /* width: 33%; */
+    
+}
+.hotelName{
+    /* width: 50%; */
+    color: #333;
+    text-align: center;
+    font-weight: bold;
+    width: 70%;
+}
+
+.in{
+    width: 35%;
+}
+.out{
+    width: 35%;
+}
+    </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Creamos un nuevo contenedor para cada huésped -->
+    <div class="voucher-copy">
+      <!-- Agregamos un encabezado para cada huésped -->
+      <h1 class="voucher-title">Voucher Alicante</h1>
+      <img src="sutebaLogo.png" alt="">
+      <div class="nombre">
+        <h2>Nombre y Apellido</h2>
+        <p class="name"></p>
+      </div>
+      <div class="documento">
+        <h2>DNI</h2>
+        <p class="dni"></p>
+      </div>
+      <div class="hotel">
+        <h2>Hotel</h2>
+        <p class="hotelName"></p>
+      </div>
+      <div class="fecha">
+        <h2>Fechas de Estancia</h2>
+        <p class="in"></p>
+        <p class="out"></p>
+      </div>
+      <div class="personas">
+        <h2>Cantidad de Personas</h2>
+        <p class="cantidad"></p>
+      </div>
+      <div class="dias">
+  <h2>Días de Estancia</h2>
+  <div class="table-container">
+    <table>
+      <tr>
+        <th>Día 1</th>
+        <th>Día 2</th>
+        <th>Día 3</th>
+        <th>Día 4</th>
+        <th>Día 5</th>
+      </tr>
+      <tr>
+        <td class="dia1"></td>
+        <td class="dia2"></td>
+        <td class="dia3"></td>
+        <td class="dia4"></td>
+        <td class="dia5"></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+      <!-- </div>
+      <button class="next-btn" onclick="nextGuest()">Siguiente huésped</button>
+    </div> -->
+  </div>
+
+  <script>
+  // Si hemos llegado al final del arreglo, volver al primer elemento
+  if (currentIndex >= info.length) {
+    currentIndex = 0;
+  }
+  // Actualizar los elementos de la página con la información del elemento actual
+  updatePage();
+});
+
+// Función para crear una copia de la tabla y multiplicarla
+const createTableCopies = (copies) => {
+  // Obtener el contenedor de la tabla original
+  const tableContainer = document.querySelector('.table-container');
+  // Crear una copia de la tabla original
+  const tableCopy = tableContainer.cloneNode(true);
+  // Insertar las copias adicionales después de la tabla original
+  for (let i = 1; i < copies; i++) {
+    tableContainer.parentNode.insertBefore(tableCopy.cloneNode(true), tableContainer.nextSibling);
+  }
+};
+
+// Función para crear el botón de imprimir
+const createPrintButton = () => {
+  // Agregar un botón o enlace para imprimir la tabla
+  const printButton = document.createElement('button');
+  printButton.textContent = 'Imprimir tabla';
+  printButton.addEventListener('click', () => {
+    // Crear las copias adicionales de la tabla antes de imprimir
+    createTableCopies(2);
+    // Imprimir la página
+    window.print();
+    // Eliminar las copias adicionales de la tabla después de imprimir
+    const additionalTables = document.querySelectorAll('.table-container:not(:first-of-type)');
+    additionalTables.forEach(table => {
+      table.parentNode.removeChild(table);
+    });
+  });
+  document.body.appendChild(printButton);
+  // Establecer la variable buttonCreated en true para evitar la duplicación
+  buttonCreated = true;
+};
+
+// Actualizar los elementos de la página con la información del primer elemento del arreglo
+updatePage();
+
+// Si el botón de siguiente no se ha creado, crearlo
+if (!buttonCreated) {
+  createButton();
+}
+
+// Si el botón de imprimir no se ha creado, crearlo
+const printButton = document.querySelector('.print-button');
+if (!printButton) {
+  createPrintButton();
+}
+});
+    </script>
+    
+    <button onclick="imprimirTabla()">Imprimir</button>
+
+</body>
+</html>
+

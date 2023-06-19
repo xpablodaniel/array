@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planilla Asistencia</title>
+    <link rel="stylesheet" href="chat.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+
+    </style>
+    
+      
+    
+</head>
+<body>
+    <h1>Planilla Mensual de Asistencia</h1>
+    <p>Apellido y Nombre: Sosa Alfonso</p>
+    <p>Horario de Trabajo: 8 a 16 hs</p>
+    <p>Cargo: Jefe de Personal</p>
+    <p>Seccional: 23 de Mayo</p>
+    <label for="periodo">Mes:</label>
+    <select id="periodo">
+    <option value="1">Enero / Febrero</option>
+    <option value="2">Febrero / Marzo</option>
+    <option value="3">Marzo / Abril</option>
+    <option value="4">Abril / Mayo</option>
+    <option value="5">Mayo / Junio</option>
+    <option value="6">Junio / Julio</option>
+    <option value="7">Julio / Agosto</option>
+    <option value="8">Agosto / Septiembre</option>
+    <option value="9">Septiembre / Octubre</option>
+    <option value="10">Octubre / Noviembre</option>
+    <option value="11">Noviembre / Diciembre</option>
+    <option value="12">Diciembre / Enero</option>
+    </select> 
+
+    <span id="año"></span>
+    
+     
+
+    <table class="mi-tabla">
+        <tr>
+          <th>Día</th>
+          <th>Llegada</th>
+          <th>Firma</th>
+          <th>Salida</th>
+          <th>Firma</th>
+          <th>Llegada</th>
+          <th>Firma</th>
+          <th>Salida</th>
+          <th>Firma</th>
+          <th>Responsable</th>
+        </tr>
+      
+
+</table>
+      
+      
+</body>
+<button onclick="window.print()">
+    <i class="material-icons">print</i>
+  </button>
+
+
+  <!-- funciona. ahora a completarlo -->
+<script>
+    function actualizarTablaMes() {
+        mes = select.value;
+        const tabla = document.querySelector('.mi-tabla');
+        const filas = tabla.rows;
+
+        // Generar los datos para el mes seleccionado
+        const datos = [];
+        const fechaInicio = new Date(año, mes - 1, 20);
+        const fechaFin = new Date(año, mes - 1, 19);
+        for (let fecha = fechaInicio; fecha <= fechaFin; fecha.setDate(fecha.getDate() + 1)) {
+            const dia = {
+                llegada1: '',
+                salida1: '',
+                firma1: false,
+                llegada2: '',
+                salida2: '',
+                firma2: false,
+                responsable: ''
+            };
+            // Aquí deberías añadir la lógica para obtener los datos de cada día
+            // y guardarlos en el objeto "dia"
+            datos.push(dia);
+        }
+
+        // Actualizar la tabla con los datos generados
+        let i = 0;
+        for (let dia = 20; dia <= 19 + datos.length; dia++) {
+            const celdas = filas[dia].cells;
+            celdas[0].innerHTML = dia;
+            celdas[1].innerHTML = datos[i].llegada1;
+            celdas[2].innerHTML = datos[i].firma1 ? 'X' : '';
+            celdas[3].innerHTML = datos[i].salida1;
+            celdas[4].innerHTML = datos[i].firma2 ? 'X' : '';
+            celdas[5].innerHTML = datos[i].llegada2;
+            celdas[6].innerHTML = datos[i].firma2 ? 'X' : '';
+            celdas[7].innerHTML = datos[i].salida2;
+            celdas[8].innerHTML = datos[i].firma2 ? 'X' : '';
+            celdas[9].innerHTML = datos[i].responsable;
+            i++;
+        }
+    }
+
+    // Obtener el mes y el año del menú desplegable
+    // Obtener el mes y el año del menú desplegable
+const select = document.getElementById("periodo");
+let mes = select.value;
+const año = new Date().getFullYear();
+
+// Agregar un evento change al menú desplegable
+select.addEventListener("change", actualizarTabla);
+
+</script>
+<!-- funciona. ahora a completarlo -->
+
+<!-- <script>
+    
+</script> -->
+
+
+
+</html>

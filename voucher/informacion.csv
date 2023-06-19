@@ -1,0 +1,7 @@
+nombre,dni,hotel,fechaIngreso,fechaSalida,dia1,dia2,dia3,dia4,dia5,cantidad
+Juan Perez,12345678,Hilton,2023-04-01,2023-04-05,-,-,-,-,-,2
+Ana Garcia,87654321,Sheraton,2023-04-02,2023-04-06,*,*,*,*,*,1
+Carlos Martinez,45678912,Marriott,2023-04-01,2023-04-06,*,*,*,*,*,3
+Sofia Rodriguez,78912345,Hilton,2023-04-03,2023-04-07,*,*,*,*,*,2
+Miguel Gonzalez,23456789,Sheraton,2023-04-05,2023-04-09,*,*,*,*,*,1
+Maria Sanchez,56789123,Marriott,2023-04-02,2023-04-08,*,*,*,*,*,2
