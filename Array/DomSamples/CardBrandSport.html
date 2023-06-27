@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Creación de Elementos</title>
+  <style>
+    #menu {
+      margin-bottom: 20px;
+    }
+
+    .card {
+      text-align: center;
+      max-width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    #imprimir-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+    }
+
+    @media print {
+      #menu {
+        display: none;
+      }
+      
+      #imprimir-btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="menu">
+    <select id="marca" onchange="actualizarCard()">
+      <option value="nike">Nike</option>
+      <option value="adidas">Adidas</option>
+      <option value="topper">Topper</option>
+    </select>
+  </div>
+
+  <div id="contenido" class="card"></div>
+
+  <button id="imprimir-btn" onclick="window.print()">Imprimir</button>
+
+  <script>
+    // Obtener la referencia al elemento contenedor en el documento HTML
+    var contenedor = document.getElementById('contenido');
+    var menuMarca = document.getElementById('marca');
+
+    // Crear elementos de imagen, título y párrafo
+    var imagen = document.createElement('img');
+    var titulo = document.createElement('h1');
+    var parrafo = document.createElement('p');
+
+    // Función para actualizar la card según la marca seleccionada
+    function actualizarCard() {
+      var marcaSeleccionada = menuMarca.value;
+
+      if (marcaSeleccionada === 'nike') {
+        imagen.src = 'nike.svg';
+        titulo.textContent = 'Logo de Nike';
+        parrafo.textContent = 'The Swoosh is the logo of American sportswear designer and retailer Nike. Today, it has become one of the most recognizable brand logos in the world, and the most valuable.';
+      } else if (marcaSeleccionada === 'adidas') {
+        imagen.src = 'adidas.svg';
+        titulo.textContent = 'Logo de Adidas';
+        parrafo.textContent = 'The Adidas logo represents a mountain, symbolizing the challenges that athletes face. It has become one of the most iconic and recognizable logos in the sports industry.';
+      } else if (marcaSeleccionada === 'topper') {
+        imagen.src = 'topper.svg';
+        titulo.textContent = 'Logo de Topper';
+        parrafo.textContent = 'Topper is a sports brand with a rich history, originating in Argentina. Its logo features the brand name with a distinctive font and style, representing its heritage and commitment to sports.';
+      }
+
+      // Limpiar el contenido anterior de la card
+      contenedor.innerHTML = '';
+
+      // Agregar los elementos a la card
+      contenedor.appendChild(imagen);
+      contenedor.appendChild(titulo);
+      contenedor.appendChild(parrafo);
+    }
+
+    // Actualizar la card al cargar la página
+    actualizarCard();
+  </script>
+</body>
+</html>

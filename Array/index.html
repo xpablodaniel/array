@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recorrer objetos con datos de archivo externo</title>
+  <style>
+    .voucher-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .voucher-title {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <input type="file" id="archivo" accept=".txt" />
+  <button onclick="cargarDatos()">Cargar datos</button>
+
+  <div id="resultados"></div>
+
+  <script>
+    function cargarDatos() {
+      var archivo = document.getElementById("archivo").files[0];
+      var lector = new FileReader();
+
+      lector.onload = function(e) {
+        var contenido = e.target.result;
+        var lineas = contenido.split("\r\n"); // Dividir por retorno de carro y nueva línea
+        var personas = generarPersonas(lineas);
+        mostrarPersonas(personas);
+      }
+
+      lector.readAsText(archivo);
+    }
+
+    function generarPersonas(lineas) {
+      var personas = [];
+
+      for (var i = 0; i < lineas.length; i += 6) {
+        var nombre = lineas[i].trim();
+        var fechaNacimiento = lineas[i + 1].trim();
+        var fechaIngreso = lineas[i + 2].trim();
+        var fechaSalida = lineas[i + 3].trim();
+        var habitacion = lineas[i + 4].trim();
+        var cantidadPersonas = lineas[i + 5].trim();
+
+        var persona = {
+          nombre: nombre,
+          fechaNacimiento: fechaNacimiento,
+          fechaIngreso: fechaIngreso,
+          fechaSalida: fechaSalida,
+          habitacion: habitacion,
+          cantidadPersonas: cantidadPersonas
+        };
+
+        personas.push(persona);
+      }
+
+      return personas;
+    }
+
+    function mostrarPersonas(personas) {
+      var resultadosContainer = document.getElementById("resultados");
+
+      for (var i = 0; i < personas.length; i++) {
+        var voucherContainer = document.createElement("div");
+        voucherContainer.className = "voucher-container";
+
+        var voucherTitle = document.createElement("h1");
+        voucherTitle.className = "voucher-title";
+        voucherTitle.textContent = "Voucher de Comidas";
+
+        var logoImagen = document.createElement("img");
+        logoImagen.src = "sutebalogo.png";
+
+        voucherContainer.appendChild(voucherTitle);
+        voucherContainer.appendChild(logoImagen);
+
+        resultadosContainer.appendChild(voucherContainer);
+
+        var persona = personas[i];
+
+        var personaContainer = document.createElement("div");
+        personaContainer.textContent = "Persona " + (i + 1) + ":";
+        resultadosContainer.appendChild(personaContainer);
+
+        var nombreContainer = document.createElement("p");
+        nombreContainer.textContent = "Nombre: " + persona.nombre;
+        resultadosContainer.appendChild(nombreContainer);
+
+        var fechaNacimientoContainer = document.createElement("p");
+        fechaNacimientoContainer.textContent = "Fecha de nacimiento: " + persona.fechaNacimiento;
+        resultadosContainer.appendChild(fechaNacimientoContainer);
+
+        var fechaIngresoContainer = document.createElement("p");
+        fechaIngresoContainer.textContent = "Fecha de ingreso: " + persona.fechaIngreso;
+        resultadosContainer.appendChild(fechaIngresoContainer);
+
+        var fechaSalidaContainer = document.createElement("p");
+        fechaSalidaContainer.textContent = "Fecha de salida: " + persona.fechaSalida;
+        resultadosContainer.appendChild(fechaSalidaContainer);
+
+        var habitacionContainer = document.createElement("p");
+        habitacionContainer.textContent = "Habitación: " + persona.habitacion;
+        resultadosContainer.appendChild(habitacionContainer);
+
+        var cantidadPersonasContainer = document.createElement("p");
+        cantidadPersonasContainer.textContent = "Cantidad de personas: " + persona.cantidadPersonas;
+        resultadosContainer.appendChild(cantidadPersonasContainer);
+
+        var divider = document.createElement("hr");
+        resultadosContainer.appendChild(divider);
+      }
+    }
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Imprimir ciudades</title>
+</head>
+<body>
+  <div id="ciudadesContainer"></div>
+
+  <script>
+    function readArray(array) {
+        let ciudadesContainer = document.getElementById('ciudadesContainer');
+      
+        // Crear un elemento de tabla
+        let tabla = document.createElement('table');
+        tabla.innerHTML = `
+          <tr>
+            <th>Ciudad</th>
+            <th>Habitantes</th>
+            <th>Latitud</th>
+            <th>Longitud</th>
+          </tr>
+        `;
+      
+        // Recorrer el array de ciudades y agregar filas a la tabla
+        for (let i = 0; i < array.length; i++) {
+          let ciudad = array[i];
+      
+          // Crear una nueva fila en la tabla
+          let fila = document.createElement('tr');
+      
+          // Crear celdas para cada propiedad de la ciudad
+          let nombreCelda = document.createElement('td');
+          nombreCelda.textContent = ciudad.nombre;
+          let habitantesCelda = document.createElement('td');
+          habitantesCelda.textContent = ciudad.habitantes;
+          let latitudCelda = document.createElement('td');
+          latitudCelda.textContent = ciudad.latitud;
+          let longitudCelda = document.createElement('td');
+          longitudCelda.textContent = ciudad.longitud;
+      
+          // Agregar las celdas a la fila
+          fila.appendChild(nombreCelda);
+          fila.appendChild(habitantesCelda);
+          fila.appendChild(latitudCelda);
+          fila.appendChild(longitudCelda);
+      
+          // Agregar la fila a la tabla
+          tabla.appendChild(fila);
+        }
+      
+        // Agregar la tabla al contenedor de ciudades
+        ciudadesContainer.appendChild(tabla);
+      }
+      
+      fetch('cities.txt')
+        .then(response => response.text())
+        .then(data => {
+          // Separar los datos del archivo por saltos de línea
+          const lineas = data.split('\n');
+      
+          // Crear un array de ciudades
+          const ciudades = lineas.filter(linea => linea.trim() !== '').map(linea => {
+            const [nombre, habitantes, latitud, longitud] = linea.split(',');
+            return {
+              nombre,
+              habitantes,
+              latitud,
+              longitud
+            };
+          });
+      
+          // Llamar a la función para recorrer el array de ciudades
+          readArray(ciudades);
+        })
+        .catch(error => console.error(error));
+      
+  </script>
+</body>
+</html>
+
+

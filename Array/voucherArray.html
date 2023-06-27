@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vouchers de Pasajeros</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 62.5%;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      margin-top: 20px;
+    }
+
+    .voucher-copy {
+      position: relative;
+      width: 600px;
+      height: 350px;
+      border-radius: 10px;
+      border: 2px solid #333;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .voucher-copy img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 20px;
+      width: 25%;
+      width: calc(100% / 3);
+    }
+
+    .voucher-title {
+      padding-top: 20px;
+      font-size: 2.5rem;
+      font-family: 'Times New Roman', Times, serif;
+      text-transform: uppercase;
+    }
+
+    .voucher-copy table td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      text-transform: uppercase;
+      color: white;
+    }
+
+    .voucher-copy table th {
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    .voucher-copy table {
+      width: 100%;
+    }
+
+    .nombre {
+      padding-top: 20px;
+    }
+
+    .documento {
+      padding-bottom: 7px;
+    }
+
+    .fecha th {
+      text-align: center;
+      padding-top: 7px;
+    }
+
+    .name {
+      width: 80%;
+    }
+
+    .dni {
+      /* width: 33%; */
+    }
+
+    .hotelName {
+      /* width: 50%; */
+      color: #333;
+      text-align: center;
+      font-weight: bold;
+      width: 70%;
+    }
+
+    .in {
+      width: 35%;
+    }
+
+    .out {
+      width: 35%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container"></div>
+
+  <script>
+    var pasajeros = [
+      {
+        nombre: 'Juan Perez',
+        dni: '12345678',
+        hotel: '23 de Mayo',
+        fechaIngreso: '2023-06-26',
+        fechaEgreso: '2023-06-30',
+        habitacion: '101'
+      },
+      {
+        nombre: 'María López',
+        dni: '98765432',
+        hotel: '23 de Mayo',
+        fechaIngreso: '2023-06-27',
+        fechaEgreso: '2023-07-01',
+        habitacion: '102'
+      },
+      {
+        nombre: 'Carlos González',
+        dni: '45678901',
+        hotel: '23 de Mayo',
+        fechaIngreso: '2023-06-28',
+        fechaEgreso: '2023-07-03',
+        habitacion: '103'
+      },
+      {
+        nombre: 'Ana Martínez',
+        dni: '78901234',
+        hotel: '23 de Mayo',
+        fechaIngreso: '2023-06-29',
+        fechaEgreso: '2023-07-04',
+        habitacion: '104'
+      },
+      {
+        nombre: 'Luis Rodríguez',
+        dni: '56789012',
+        hotel: '23 de Mayo',
+        fechaIngreso: '2023-06-30',
+        fechaEgreso: '2023-07-05',
+        habitacion: '105'
+      }
+    ];
+
+    function createVouchers(pasajeros) {
+      var container = document.querySelector('.container');
+
+      pasajeros.forEach(function(pasajero) {
+        var voucherCopy = document.createElement('div');
+        voucherCopy.classList.add('voucher-copy');
+
+        var voucherTitle = document.createElement('h1');
+        voucherTitle.classList.add('voucher-title');
+        voucherTitle.textContent = 'Voucher Alicante';
+
+        var sutebaLogo = document.createElement('img');
+        sutebaLogo.src = 'sutebaLogo.png';
+
+        var nombreDiv = document.createElement('div');
+        nombreDiv.classList.add('nombre');
+        var nombreTitle = document.createElement('h2');
+        nombreTitle.textContent = 'Nombre y Apellido';
+        var nombre = document.createElement('p');
+        nombre.classList.add('name');
+        nombre.textContent = pasajero.nombre;
+
+        var dniDiv = document.createElement('div');
+        dniDiv.classList.add('documento');
+        var dniTitle = document.createElement('h2');
+        dniTitle.textContent = 'DNI';
+        var dni = document.createElement('p');
+        dni.classList.add('dni');
+        dni.textContent = pasajero.dni;
+
+        var hotelDiv = document.createElement('div');
+        hotelDiv.classList.add('hotel');
+        var hotelTitle = document.createElement('h2');
+        hotelTitle.textContent = 'Hotel';
+        var hotelName = document.createElement('p');
+        hotelName.classList.add('hotelName');
+        hotelName.textContent = pasajero.hotel;
+
+        var fechaDiv = document.createElement('div');
+        fechaDiv.classList.add('fecha');
+        var fechaTitle = document.createElement('h2');
+        fechaTitle.textContent = 'Fechas de Estadia';
+        var fechaIngreso = document.createElement('p');
+        fechaIngreso.classList.add('in');
+        fechaIngreso.textContent = pasajero.fechaIngreso;
+        var fechaEgreso = document.createElement('p');
+        fechaEgreso.classList.add('out');
+        fechaEgreso.textContent = pasajero.fechaEgreso;
+
+        var personasDiv = document.createElement('div');
+        personasDiv.classList.add('personas');
+        var personasTitle = document.createElement('h2');
+        personasTitle.textContent = 'Cantidad de Personas';
+        var cantidadPersonas = document.createElement('p');
+        cantidadPersonas.classList.add('cantidad');
+        cantidadPersonas.textContent = '1'; // Asumiendo que solo hay un pasajero por habitación
+
+        var diasDiv = document.createElement('div');
+        diasDiv.classList.add('dias');
+        var diasTitle = document.createElement('h2');
+        diasTitle.textContent = 'Días de Estancia';
+        var tableContainer = document.createElement('div');
+        tableContainer.classList.add('table-container');
+        var table = document.createElement('table');
+        var tableRow = document.createElement('tr');
+
+        for (var i = 1; i <= 5; i++) {
+          var tableHeader = document.createElement('th');
+          tableHeader.textContent = 'Día ' + i;
+          tableRow.appendChild(tableHeader);
+        }
+
+        var tableData = document.createElement('td');
+        tableData.textContent = 'Habitación ' + pasajero.habitacion;
+        tableRow.appendChild(tableData);
+
+        table.appendChild(tableRow);
+        tableContainer.appendChild(table);
+
+        nombreDiv.appendChild(nombreTitle);
+        nombreDiv.appendChild(nombre);
+
+        dniDiv.appendChild(dniTitle);
+        dniDiv.appendChild(dni);
+
+        hotelDiv.appendChild(hotelTitle);
+        hotelDiv.appendChild(hotelName);
+
+        fechaDiv.appendChild(fechaTitle);
+        fechaDiv.appendChild(fechaIngreso);
+        fechaDiv.appendChild(fechaEgreso);
+
+        personasDiv.appendChild(personasTitle);
+        personasDiv.appendChild(cantidadPersonas);
+
+        diasDiv.appendChild(diasTitle);
+        diasDiv.appendChild(tableContainer);
+
+        voucherCopy.appendChild(voucherTitle);
+        voucherCopy.appendChild(sutebaLogo);
+        voucherCopy.appendChild(nombreDiv);
+        voucherCopy.appendChild(dniDiv);
+        voucherCopy.appendChild(hotelDiv);
+        voucherCopy.appendChild(fechaDiv);
+        voucherCopy.appendChild(personasDiv);
+        voucherCopy.appendChild(diasDiv);
+
+        container.appendChild(voucherCopy);
+      });
+    }
+
+    createVouchers(pasajeros);
+  </script>
+</body>
+</html>

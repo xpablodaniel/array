@@ -1,0 +1,6 @@
+Nombre, Dni, Hotel, FechaIngreso, FechaEgreso, Habitacion
+Juan Perez, 12345678, 23 de Mayo, 2023-06-26, 2023-06-30, 101
+María López, 98765432, 23 de Mayo, 2023-06-27, 2023-07-01, 102
+Carlos González, 45678901, 23 de Mayo, 2023-06-28, 2023-07-03, 103
+Ana Martínez, 78901234, 23 de Mayo, 2023-06-29, 2023-07-04, 104
+Luis Rodríguez, 56789012, 23 de Mayo, 2023-06-30, 2023-07-05, 105
